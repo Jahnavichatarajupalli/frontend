@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './Login.css';
 
+const BACKEND_URL = 'https://backend-gr5x.onrender.com';
+
 const Login = ({ onLogin }) => {
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
@@ -31,7 +33,7 @@ const Login = ({ onLogin }) => {
         setError('');
 
         try {
-            await axios.post('/api/auth/request-otp', { email });
+            await axios.post(`${BACKEND_URL}/api/auth/request-otp`, { email });
             setOtpSent(true);
             setTimer(60); // Reset timer
         } catch (err) {
@@ -48,7 +50,7 @@ const Login = ({ onLogin }) => {
         setError('');
 
         try {
-            const res = await axios.post('/api/auth/verify-otp', { email, otp });
+            const res = await axios.post(`${BACKEND_URL}/api/auth/verify-otp`, { email, otp });
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('officerData', JSON.stringify(res.data.officer));
 
