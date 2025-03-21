@@ -34,7 +34,7 @@ const VoterList = ({ onLogout }) => {
                 if (type === 'voted') endpoint = '/api/voters/voted';
                 if (type === 'yet-to-vote') endpoint = '/api/voters/yet-to-vote';
 
-                const response = await fetch(`http://localhost:5000${endpoint}`, {
+                const response = await fetch(`https://backend-gr5x.onrender.com${endpoint}`, {
                     headers: {
                         'x-auth-token': token,
                         'Content-Type': 'application/json'

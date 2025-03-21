@@ -15,7 +15,7 @@ const VoterListPage = ({ onLogout }) => {
             setLoading(true);
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`http://localhost:5000/api/voters/${status}`, {
+                const response = await fetch(`https://backend-gr5x.onrender.com/api/voters/${status}`, {
                     headers: {
                         'x-auth-token': token
                     }
